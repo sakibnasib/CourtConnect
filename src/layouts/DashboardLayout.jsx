@@ -128,7 +128,6 @@ const DashboardLayout = () => {
           <AdminLink />
         </div>
 
-<hr />
         <div className="absolute bottom-2 left-4">
           <button
             onClick={handleLogout}

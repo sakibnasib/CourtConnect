@@ -12,6 +12,7 @@ import AnnouncementList from "../pages/Dashboard/Admin/AnnouncementList";
 import CourtBooking from "../pages/Courts";
 import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
+import ManageBookings from "../pages/Dashboard/Admin/ManageBookings";
 
 
 
@@ -34,7 +35,8 @@ import AllUsers from "../pages/Dashboard/Admin/AllUsers";
        {path:'manage-courts',Component:ManageCourts},
        {path:'announcements',Component:AnnouncementList},
        {path:'manage-coupons',Component:ManageCoupons},
-       {path:'all-users',Component:AllUsers}
+       {path:'all-users',Component:AllUsers},
+       {path:'manage-bookings-approval',Component:ManageBookings}
       ]
     }
 
