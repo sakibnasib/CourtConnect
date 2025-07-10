@@ -11,6 +11,7 @@ import ManageCourts from "../pages/Dashboard/Admin/ManageCourts";
 import AnnouncementList from "../pages/Dashboard/Admin/AnnouncementList";
 import CourtBooking from "../pages/Courts";
 import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
+import AllUsers from "../pages/Dashboard/Admin/AllUsers";
 
 
 
@@ -32,7 +33,8 @@ import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
       children:[
        {path:'manage-courts',Component:ManageCourts},
        {path:'announcements',Component:AnnouncementList},
-       {path:'manage-coupons',Component:ManageCoupons}
+       {path:'manage-coupons',Component:ManageCoupons},
+       {path:'all-users',Component:AllUsers}
       ]
     }
 

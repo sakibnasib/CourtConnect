@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import debounce from 'lodash.debounce';
+
 
 const fetchUsers = async (search) => {
   const res = await axios.get(`http://localhost:3000/users`, {
@@ -36,7 +36,7 @@ const AllUsers = () => {
         placeholder="Search by name or email..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full border px-4 py-2 rounded mb-4"
+        className=" border px-4 py-2 rounded mb-4"
       />
 
       {isLoading && <p>Loading users...</p>}
