@@ -1,25 +1,17 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
-const promotions = [
-  {
-    id: 1,
-    code: 'ABC5',
-    discount: '5%',
-    description: 'Get 5% off on all court bookings this month.',
-  },
-  {
-    id: 2,
-    code: 'WELCOME10',
-    discount: '10%',
-    description: 'New members enjoy 10% off on first booking!',
-  },
-  {
-    id: 3,
-    code: 'WEEKEND15',
-    discount: '15%',
-    description: '15% off every weekend on squash courts!',
-  },
-];
+
 const PromotionsSection = () => {
+  // Fetch all coupons
+  const { data: coupons = [], isLoading } = useQuery({
+    queryKey: ['coupons'],
+    queryFn: async () => {
+      const res = await axios.get('http://localhost:3000/coupons');
+      return res.data;
+    },
+  });
+  if(isLoading )return <p>Loding</p>
     return (
          <section className="bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-4 lg:px-0">
       <div className="max-w-6xl mx-auto text-center">
@@ -29,7 +21,7 @@ const PromotionsSection = () => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {promotions.map((promo) => (
+          {coupons.map((promo) => (
             <div
               key={promo.id}
               className="bg-white rounded-xl shadow-lg p-6 border border-blue-200 hover:border-primary transition"

@@ -588,7 +588,11 @@ import CourtModal from "../../../Component/Modal/CourtModal";
 import { imageUpload } from "../../../api/utils";
 
 
-const slotOptions = ["9AM-10AM", "10AM-11AM", "11AM-12PM", "12PM-1PM"];
+const slotOptions = [ '6:00 AM - 7:00 AM',
+                    '7:00 AM - 8:00 AM',
+                    '8:00 AM - 9:00 AM',
+                    '5:00 PM - 6:00 PM',
+                    '6:00 PM - 7:00 PM',];
 
 const ManageCourts = () => {
   const [editingCourt, setEditingCourt] = useState(null);

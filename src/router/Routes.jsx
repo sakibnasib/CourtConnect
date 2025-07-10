@@ -8,6 +8,10 @@ import Register from "../pages/Register/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ManageCourts from "../pages/Dashboard/Admin/ManageCourts";
+import AnnouncementList from "../pages/Dashboard/Admin/AnnouncementList";
+import CourtBooking from "../pages/Courts";
+import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
+
 
 
   export const router = createBrowserRouter ([
@@ -15,6 +19,7 @@ import ManageCourts from "../pages/Dashboard/Admin/ManageCourts";
     {path: '/',Component:MainLayout
       ,children:[
 {index:true, Component:Home},
+{path:'courts',Component:CourtBooking}
       ]
     },
     {path:'/auth',Component:AuthLayout,
@@ -25,7 +30,9 @@ import ManageCourts from "../pages/Dashboard/Admin/ManageCourts";
     },
     {path:'/dashboard',Component:DashboardLayout,
       children:[
-       {path:'manage-courts',Component:ManageCourts}
+       {path:'manage-courts',Component:ManageCourts},
+       {path:'announcements',Component:AnnouncementList},
+       {path:'manage-coupons',Component:ManageCoupons}
       ]
     }
 

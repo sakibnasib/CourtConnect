@@ -23,7 +23,7 @@ const DashboardLayout = () => {
     <div className="flex min-h-screen bg-gray-50 ">
       {/* Sidebar */}
       <aside
-  className={`sticky top-0 z-50 h-screen w-64 bg-white shadow-md transform ${
+  className={` h-screen w-64 bg-white shadow-md transform ${
     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
   } transition-transform duration-200 ease-in-out md:relative md:translate-x-0`}
 >
