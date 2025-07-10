@@ -96,7 +96,7 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen  bg-gray-50 ">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div
@@ -123,15 +123,16 @@ const DashboardLayout = () => {
           </button>
         </div>
 
-        <div className="p-4 space-y-4">
+        <div className="p-1 space-y-1">
           {/* Add your links here */}
           <AdminLink />
         </div>
 
-        <div className="absolute bottom-4 left-4">
+<hr />
+        <div className="absolute bottom-2 left-4">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-red-500 hover:text-red-600"
+            className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-red-500 hover:text-red-600"
           >
             <LogOut size={16} />
             Logout
@@ -153,7 +154,7 @@ const DashboardLayout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto p-4">
+        <main className="flex-1 overflow-x-auto p-4">
           <Outlet />
         </main>
       </div>
