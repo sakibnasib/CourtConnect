@@ -13,17 +13,17 @@ const UserLink = () => {
 
   return (
     <div className="space-y-2">
-      <NavLink to="/dashboard/profile" className={linkClass}>
+      <NavLink to="/dashboard/profile-user" className={linkClass}>
         <User size={18} />
         My Profile
       </NavLink>
 
-      <NavLink to="/dashboard/bookings" className={linkClass}>
+      <NavLink to="/dashboard/usersbookings" className={linkClass}>
         <CalendarCheck size={18} />
         My Bookings
       </NavLink>
 
-      <NavLink to="/dashboard/settings" className={linkClass}>
+      <NavLink to="/dashboard/userannouncements" className={linkClass}>
       <Megaphone size={18} />
         Announcements
       </NavLink>

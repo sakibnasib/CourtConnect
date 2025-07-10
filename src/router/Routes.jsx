@@ -14,6 +14,9 @@ import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
 import ManageBookings from "../pages/Dashboard/Admin/ManageBookings";
 import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
+import MyProfile from "../pages/Dashboard/User/Profile";
+import Announ from "../Component/Announcements/Announcements";
+import PendingBookings from "../pages/Dashboard/User/PendingBookings";
 
 
 
@@ -38,7 +41,10 @@ import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
        {path:'manage-coupons',Component:ManageCoupons},
        {path:'all-users',Component:AllUsers},
        {path:'manage-bookings-approval',Component:ManageBookings},
-       {path:'manage-members',Component:ManageMembers}
+       {path:'manage-members',Component:ManageMembers},
+       {path:'profile-user',Component:MyProfile},
+       {path:'userannouncements',Component:Announ},
+       {path:'usersbookings',Component:PendingBookings}
       ]
     }
 

@@ -81,7 +81,9 @@ import { Outlet, Link } from 'react-router';
 import { Menu, X, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import useAuth from '../hook/useAuth';
-import AdminLink from '../pages/Dashboard/Menu/AdminLink/AdminLink';
+import UserLink from '../pages/Dashboard/Menu/UserMenu/UserLink';
+import Logo from '../Component/Logo';
+// import AdminLink from '../pages/Dashboard/Menu/AdminLink/AdminLink';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -111,9 +113,9 @@ const DashboardLayout = () => {
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0`}
       >
-        <div className="flex items-center justify-between h-16 px-6 border-b">
-          <Link to="/" className="text-2xl font-bold text-blue-600">
-            CourtConnect
+        <div className="flex items-center justify-between h-16 px-6 ">
+          <Link to="/" className="text-2xl font-bold  shadow-2xl ">
+           <Logo/>
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -125,7 +127,8 @@ const DashboardLayout = () => {
 
         <div className="p-1 space-y-1">
           {/* Add your links here */}
-          <AdminLink />
+          {/* <AdminLink /> */}
+          <UserLink/>
         </div>
 
         <div className="absolute bottom-2 left-4">

@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router';
-
+import Logo from '../Component/Logo'
 import ProfileDropdown from './ProfileDropdown';
 import useAuth from '../hook/useAuth';
 
@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="flex-1">
           <Link to="/" className="text-xl font-bold flex items-center gap-2">
             {/* <img src="/logo.png" alt="logo" className="w-10 h-10" /> */}
-            <span>CourtConnect</span>
+          <Logo/>
           </Link>
         </div>
 

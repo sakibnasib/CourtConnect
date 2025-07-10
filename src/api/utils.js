@@ -34,6 +34,23 @@ export const imageUpload=async imageData =>{
   // image url response from imgbb
   return data?.data?.display_url
 };
+// export const imageUpload = async (imageFile) => {
+//   const formData = new FormData();
+//   formData.append("file", imageFile);
+//   formData.append("upload_preset", "unsigned_preset_1"); // <-- put your unsigned preset here
+
+//   try {
+//     const { data } = await axios.post(
+//       "https://api.cloudinary.com/v1_1/dns0jdzrm/image/upload",
+//       formData
+//     );
+//     return data.secure_url; // Return the hosted image URL
+//   } catch (error) {
+//     console.error("❌ Cloudinary upload failed:", error);
+//     throw new Error("Image upload failed");
+//   }
+// };
+
 
 // save or update user in db
 export const saveUserDB= async user =>{
