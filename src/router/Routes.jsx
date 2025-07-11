@@ -18,10 +18,10 @@ import MyProfile from "../pages/Dashboard/User/Profile";
 import Announ from "../Component/Announcements/Announcements";
 import PendingBookings from "../pages/Dashboard/User/PendingBookings";
 import ManageBookingsApproval from "../pages/Dashboard/Admin/ManageBookings";
+import PaymentPage from "../pages/Dashboard/Member/PaymentPage";
 
 
-
-  export const router = createBrowserRouter ([
+export const router = createBrowserRouter ([
 
     {path: '/',Component:MainLayout
       ,children:[
@@ -46,7 +46,8 @@ import ManageBookingsApproval from "../pages/Dashboard/Admin/ManageBookings";
        {path:'profile-user',Component:MyProfile},
        {path:'userannouncements',Component:Announ},
        {path:'usersbookings',Component:PendingBookings},
-       {path:'approved-bookings-member',Component:ManageBookingsApproval}
+       {path:'approved-bookings-member',Component:ManageBookingsApproval},
+       {path:'payment', element:<PaymentPage></PaymentPage>}
       ]
     }
 

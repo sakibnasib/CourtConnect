@@ -33,7 +33,7 @@ const MemberApprovedBookings = () => {
   };
 
   const handlePayment = (booking) => {
-    navigate('/dashboard/payment', { state: booking }); // Send booking data to payment route
+    navigate('/dashboard/payment', { state: booking }); 
   };
 
   if (isLoading) return <p className="text-center">Loading bookings...</p>;
