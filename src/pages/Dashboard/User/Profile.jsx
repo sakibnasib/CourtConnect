@@ -15,12 +15,13 @@ const MyProfile = () => {
     },
   });
 
-  const userData = users[0];
+
+  // const userData = users[0];
 
   if (isLoading) return <p className="text-center">Loading profile...</p>;
-  if (error || !userData) return <p className="text-red-500 text-center">Failed to load User  profile.</p>;
+  if (error || !users) return <p className="text-red-500 text-center">Failed to load User  profile.</p>;
 
-  const { name, image, email: userEmail, created_at, last_loggedIn } = userData;
+  const { name, image, email: userEmail,role, created_at, last_loggedIn } = users;
 
   const formatDateTime = (iso) =>
     new Date(iso).toLocaleString(undefined, {
@@ -33,7 +34,7 @@ const MyProfile = () => {
     });
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded shadow mt-10">
+    <div className="max-w-xl mx-auto p-6 bg-gradient-to-r from-indigo-100 to-purple-100  rounded-xl shadow-md mt-10">
       <h2 className="text-2xl font-bold mb-4 text-center">My Profile</h2>
       <div className="flex flex-col items-center gap-4">
         <img
@@ -43,6 +44,7 @@ const MyProfile = () => {
         />
         <div className="text-center space-y-2">
           <h3 className="text-xl font-semibold">{name}</h3>
+            <p className=" text-amber-300 ">{role}</p>
           <p className="text-gray-600">{userEmail}</p>
           <p className="text-sm text-gray-500">
             <strong>Registered on:</strong> {formatDateTime(created_at)}

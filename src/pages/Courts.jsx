@@ -13,7 +13,7 @@ const CourtBookingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourt, setSelectedCourt] = useState(null);
   const [bookingData, setBookingData] = useState({ date: '', slots: [] });
-  const [totalPrice,setTotalPrice]=useState()
+ 
 
   // ✅ Fetch courts from DB
   const { data: courts = [], isLoading } = useQuery({
