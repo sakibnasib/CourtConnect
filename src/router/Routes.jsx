@@ -17,6 +17,7 @@ import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
 import MyProfile from "../pages/Dashboard/User/Profile";
 import Announ from "../Component/Announcements/Announcements";
 import PendingBookings from "../pages/Dashboard/User/PendingBookings";
+import ManageBookingsApproval from "../pages/Dashboard/Admin/ManageBookings";
 
 
 
@@ -44,7 +45,8 @@ import PendingBookings from "../pages/Dashboard/User/PendingBookings";
        {path:'manage-members',Component:ManageMembers},
        {path:'profile-user',Component:MyProfile},
        {path:'userannouncements',Component:Announ},
-       {path:'usersbookings',Component:PendingBookings}
+       {path:'usersbookings',Component:PendingBookings},
+       {path:'approved-bookings-member',Component:ManageBookingsApproval}
       ]
     }
 

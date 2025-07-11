@@ -61,7 +61,7 @@ const CourtBookingPage = () => {
       totalPrice: selectedCourt.price * bookingData.slots.length,
       date: bookingData.date,
       slots: bookingData.slots,
-      userEmai:user?.email,
+      userEmail:user?.email,
       status: 'pending',
     });
   };

@@ -7,6 +7,7 @@ import {
   CreditCard,
   Megaphone,
 } from 'lucide-react';
+import { TbCreditCard } from 'react-icons/tb';
 
 const MemberLink = () => {
   const linkClass = ({ isActive }) =>
@@ -18,7 +19,7 @@ const MemberLink = () => {
 
   return (
     <div className="space-y-2">
-      <NavLink to="/dashboard/profile" className={linkClass}>
+      <NavLink to="/dashboard/profile-user" className={linkClass}>
         <UserCircle size={18} />
         My Profile
       </NavLink>
@@ -28,7 +29,7 @@ const MemberLink = () => {
         Pending Bookings
       </NavLink>
 
-      <NavLink to="/dashboard/approved-bookings" className={linkClass}>
+      <NavLink to="/dashboard/approved-bookings-member" className={linkClass}>
         <CheckCircle2 size={18} />
         Approved Bookings
       </NavLink>
@@ -37,6 +38,10 @@ const MemberLink = () => {
         <BadgeCheck size={18} />
         Confirmed Bookings
       </NavLink>
+<NavLink to="/dashboard/payment" className={linkClass}>
+  <TbCreditCard size={18} />
+  Payment
+</NavLink>
 
       <NavLink to="/dashboard/payment-history" className={linkClass}>
         <CreditCard size={18} />

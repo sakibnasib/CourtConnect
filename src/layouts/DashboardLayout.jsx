@@ -2,8 +2,9 @@ import { Outlet, Link } from 'react-router';
 import { Menu, X, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import useAuth from '../hook/useAuth';
-import UserLink from '../pages/Dashboard/Menu/UserMenu/UserLink';
+// import UserLink from '../pages/Dashboard/Menu/UserMenu/UserLink';
 import Logo from '../Component/Logo';
+import MemberLink from '../pages/Dashboard/Menu/MemberMenu/MemberLink';
 // import AdminLink from '../pages/Dashboard/Menu/AdminLink/AdminLink';
 
 const DashboardLayout = () => {
@@ -13,6 +14,7 @@ const DashboardLayout = () => {
   const handleLogout = async () => {
     try {
       await logOut();
+     
     } catch (err) {
       console.error(err);
     }
@@ -49,7 +51,8 @@ const DashboardLayout = () => {
         <div className="p-1 space-y-1">
           {/* Add your links here */}
           {/* <AdminLink /> */}
-          <UserLink/>
+          {/* <UserLink/> */}
+          <MemberLink/>
         </div>
 
         <div className="absolute bottom-2 left-4">
