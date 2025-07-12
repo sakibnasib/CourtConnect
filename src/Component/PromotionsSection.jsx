@@ -7,7 +7,7 @@ const PromotionsSection = () => {
   const { data: coupons = [], isLoading } = useQuery({
     queryKey: ['coupons'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/coupons');
+      const res = await axios.get('http://localhost:3000/admin/coupons');
       return res.data;
     },
   });
@@ -27,7 +27,7 @@ const PromotionsSection = () => {
               className="bg-white rounded-xl shadow-lg p-6 border border-blue-200 hover:border-primary transition"
             >
               <h3 className="text-2xl font-bold text-primary mb-2">{promo.code}</h3>
-              <p className="text-lg font-semibold text-green-600 mb-1">Discount: {promo.discount}</p>
+              <p className="text-lg font-semibold text-green-600 mb-1">Discount: {promo.discount}%</p>
               <p className="text-gray-600">{promo.description}</p>
             </div>
           ))}

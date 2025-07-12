@@ -48,7 +48,7 @@ const MemberLink = () => {
         Payment History
       </NavLink>
 
-      <NavLink to="/dashboard/announcements" className={linkClass}>
+      <NavLink to="/dashboard/userannouncements" className={linkClass}>
         <Megaphone size={18} />
         Announcements
       </NavLink>

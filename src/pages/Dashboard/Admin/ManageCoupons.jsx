@@ -14,7 +14,7 @@ const ManageCoupons = () => {
   const { data: coupons = [], isLoading } = useQuery({
     queryKey: ['coupons'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/coupons');
+      const res = await axios.get('http://localhost:3000/admin/coupons');
       return res.data;
     },
   });

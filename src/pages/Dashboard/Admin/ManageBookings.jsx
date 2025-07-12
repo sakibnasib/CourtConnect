@@ -115,7 +115,7 @@ const MemberApprovedBookings = () => {
       return res.data;
     },
   });
-
+console.log(bookings)
   // Cancel mutation
   const cancelMutation = useMutation({
     mutationFn: (id) => axios.delete(`http://localhost:3000/bookings/${id}`),
