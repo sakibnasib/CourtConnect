@@ -14,7 +14,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-md sticky top-0 z-50">
+    <div className="bg-base-100 rounded-4xl shadow-md sticky top-0 z-50  ">
       <div className="navbar max-w-7xl mx-auto">
         {/* Logo + Site Name */}
         <div className="flex-1">

@@ -1,13 +1,16 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import useAuth from '../../../hook/useAuth';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 const ConfirmedBookings = () => {
+  const {user}=useAuth()
+  const axiosSecure = useAxiosSecure()
   const { data: bookings = [], isLoading, isError } = useQuery({
     queryKey: ['confirmedBookings'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/bookings?status=confirmed');
-      return res.data;
+      const {data}= await axiosSecure.get(`/bookings/confirmed/${user?.email}`);
+      return data;
     },
   });
 
@@ -35,7 +38,7 @@ const ConfirmedBookings = () => {
             <tbody>
               {bookings.map((booking) => (
                 <tr key={booking._id} className="border-t hover:bg-gray-50">
-                  <td className="py-2 px-4 border">{booking.userEmai}</td>
+                  <td className="py-2 px-4 border">{booking.userEmail}</td>
                   <td className="py-2 px-4 border">{booking.courtType}</td>
                   <td className="py-2 px-4 border">{booking.date}</td>
                   <td className="py-2 px-4 border">{booking.slots?.join(', ')}</td>

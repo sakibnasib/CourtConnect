@@ -1,66 +1,98 @@
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { motion } from "framer-motion";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
+const slides = [
+  {
+    img: "https://i.ibb.co/bj0PtCH3/basketball-court-with-wire-fence-around.jpg",
+    heading: "Welcome to CourtConnect",
+    subtext: "The ultimate sports club in Dhaka for fitness and fun.",
+  },
+  {
+    img: "https://i.ibb.co/kYX7qWt/basketball-court.jpg",
+    heading: "Book Your Favorite Courts",
+    subtext: "Tennis, squash, badminton – reserve slots easily.",
+  },
+  {
+    img: "https://i.ibb.co/rK6GCWY7/basketball-court-1.jpg",
+    heading: "Join Club Activities & Events",
+    subtext: "Train, compete, and connect with fellow members.",
+  },
+];
 
 const Banner = () => {
   return (
-    <section className="max-w-7xl mx-auto  ">
+    <section className="max-w-7xl mx-auto ">
       <Carousel
         autoPlay
         infiniteLoop
         showThumbs={false}
         showStatus={false}
-        interval={4000}
-        transitionTime={800}
+        interval={5000}
+        transitionTime={700}
         swipeable
         emulateTouch
+        renderArrowPrev={(onClickHandler, hasPrev, label) =>
+          hasPrev && (
+            <button
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+              className="absolute left-4 top-1/2 z-30 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full"
+            >
+              <FaArrowLeft size={20} />
+            </button>
+          )
+        }
+        renderArrowNext={(onClickHandler, hasNext, label) =>
+          hasNext && (
+            <button
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+              className="absolute right-4 top-1/2 z-30 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full"
+            >
+              <FaArrowRight size={20} />
+            </button>
+          )
+        }
       >
-        {/* Slide 1 */}
-        <div className="relative">
-          <img
-            src="https://i.ibb.co/bj0PtCH3/basketball-court-with-wire-fence-around.jpg"
-            alt="Club"
-            className="object-cover w-full h-[70vh] rounded-xl"
-          />
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-start px-10">
-            <div className="text-white space-y-4 max-w-xl">
-              <h2 className="text-4xl lg:text-6xl font-bold">Welcome to CourtConnect</h2>
-              <p className="text-lg">The ultimate sports club in Dhaka for fitness and fun.</p>
-              {/* <a href="/courts" className="btn btn-primary mt-2">Explore Courts</a> */}
+        {slides.map((slide, index) => (
+          <div key={index} className="relative rounded-xl overflow-hidden">
+            <img
+              src={slide.img}
+              alt={`Slide ${index + 1}`}
+              className="object-cover w-full h-[70vh]"
+            />
+            <div className="absolute inset-0" />
+            <div className="absolute inset-0 z-20 flex items-center px-6 lg:px-16">
+              <motion.div
+                className="text-blue-200 max-w-2xl"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h2
+                  className="text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-xl"
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1.2 }}
+                >
+                  {slide.heading}
+                </motion.h2>
+                <motion.p
+                  className="text-lg md:text-xl text-white/90"
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1.4 }}
+                >
+                  {slide.subtext}
+                </motion.p>
+              </motion.div>
             </div>
           </div>
-        </div>
-
-        {/* Slide 2 */}
-        <div className="relative">
-          <img
-            src="https://i.ibb.co/kYX7qWt/basketball-court.jpg"
-            alt="Courts"
-            className="object-cover w-full h-[70vh] rounded-xl"
-          />
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-start px-10">
-            <div className="text-white space-y-4 max-w-xl">
-              <h2 className="text-4xl lg:text-6xl font-bold">Book Your Favorite Courts</h2>
-              <p className="text-lg">Tennis, squash, badminton – reserve slots easily.</p>
-              {/* <a href="/login" className="btn btn-secondary mt-2">Join Now</a> */}
-            </div>
-          </div>
-        </div>
-
-        {/* Slide 3 */}
-        <div className="relative">
-          <img
-            src="https://i.ibb.co/rK6GCWY7/basketball-court-1.jpg"
-            alt="Activities"
-            className="object-cover w-full h-[70vh] rounded-xl"
-          />
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-start px-10">
-            <div className="text-white space-y-4 max-w-xl">
-              <h2 className="text-4xl lg:text-6xl font-bold">Join Club Activities & Events</h2>
-              <p className="text-lg">Train, compete, and connect with fellow members.</p>
-              {/* <a href="/dashboard" className="btn btn-accent mt-2">Go to Dashboard</a> */}
-            </div>
-          </div>
-        </div>
+        ))}
       </Carousel>
     </section>
   );

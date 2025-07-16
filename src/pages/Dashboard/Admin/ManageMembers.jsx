@@ -2,22 +2,24 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
+import Loader from '../../../Component/Loader/Loader';
 
 
 const ManageMembers = () => {
   const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState('');
-
+const axiosSecure = useAxiosSecure()
   const { data: members = [], isLoading, error } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-       const res = await axios.get('http://localhost:3000/users?role=member');
+       const res = await axiosSecure.get('/users?role=member');
   return res.data;
     },
   });
 
   const deleteMutation = useMutation({
-    mutationFn: (id) => axios.delete(`http://localhost:3000/users/${id}`),
+    mutationFn: (id) => axiosSecure.delete(`/users/${id}`),
     onSuccess: () => {
       Swal.fire('Deleted!', 'Member has been removed.', 'info');
       queryClient.invalidateQueries(['members']);
@@ -56,7 +58,7 @@ const ManageMembers = () => {
       />
 
       {isLoading ? (
-        <p>Loading members...</p>
+       <Loader/>
       ) : error ? (
         <p className="text-red-500">Failed to load members.</p>
       ) : filteredMembers.length === 0 ? (

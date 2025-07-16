@@ -2,15 +2,18 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
+import useAuth from "../../../hook/useAuth";
 
 const PendingBookings = () => {
   const queryClient = useQueryClient();
-
+const axiosSecure = useAxiosSecure()
+const {user}=useAuth()
   // GET all pending bookings
   const { data: bookings = [], isLoading, error } = useQuery({
     queryKey: ["pendingBookings"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/bookings?status=pending");
+      const res = await axiosSecure.get(`/bookings/pending/${user?.email}`);
       return res.data;
     },
   });
@@ -75,7 +78,7 @@ const PendingBookings = () => {
                     ))}
                   </td>
                   <td>৳{booking.totalPrice}</td>
-                  <td>{booking.userEmai}</td>
+                  <td>{booking.userEmail}</td>
                   <td>
                     <button
                       onClick={() => handleCancel(booking._id)}

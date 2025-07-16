@@ -3,8 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import { imageUpload } from "../../api/utils";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const slotOptions = ['6:00 AM - 7:00 AM',
                     '7:00 AM - 8:00 AM',
@@ -19,11 +20,12 @@ const CourtModal = ({ isOpen, onClose, court, refetch }) => {
     reset,
     formState: { errors },
   } = useForm();
+   const axiosSecure = useAxiosSecure()
 
   useEffect(() => {
     if (court) {
       reset({
-        name: court.name,
+        name: court.title,
         type: court.type,
         price: court.price,
         slots: slotOptions.reduce((acc, slot) => {
@@ -35,14 +37,16 @@ const CourtModal = ({ isOpen, onClose, court, refetch }) => {
   }, [court, reset]);
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, ...data }) => axios.put(`http://localhost:3000/courts/${id}`, data),
+    mutationFn: ({ id, ...data }) => axiosSecure.put(`http://localhost:3000/courts/${id}`, data),
     onSuccess: () => {
       Swal.fire("Updated", "Court updated successfully", "success");
       onClose();
       refetch();
+      console.log('ryhrdfhydftgh')
     },
     onError: () => {
       Swal.fire("Error", "Update failed", "error");
+       console.log('wrewr')
     },
   });
 
@@ -54,12 +58,12 @@ const CourtModal = ({ isOpen, onClose, court, refetch }) => {
     }
 
     const updated = {
-      name: data.name,
+      title: data.title,
       type: data.type,
       price: parseFloat(data.price),
       image: imageUrl,
       slots: Object.entries(data.slots || {})
-        .filter(([_, v]) => v)
+        .filter(([ _, v]) => v)
         .map(([k]) => k),
     };
 
@@ -85,7 +89,7 @@ const CourtModal = ({ isOpen, onClose, court, refetch }) => {
             <Dialog.Title className="text-xl font-bold mb-4">Edit Court</Dialog.Title>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              <input {...register("name", { required: true })} className="input input-bordered w-full" />
+              <input {...register("title", { required: true })} className="input input-bordered w-full" />
               <select {...register("type", { required: true })} className="select select-bordered w-full">
                 <option value="">Select Type</option>
                 <option value="tennis">Tennis</option>

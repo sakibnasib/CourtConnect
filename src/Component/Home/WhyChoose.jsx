@@ -2,7 +2,7 @@ import React from 'react';
 
 const WhyChoose = () => {
     return (
-       <section className="bg-gray-100 py-12 px-4 md:px-16">
+       <section className="bg-gray-200 mt-10 rounded-3xl py-12 px-4 md:px-16">
   <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">✨ Why Choose CourtConnect?</h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
     <div className="p-6 bg-white rounded-2xl shadow">

@@ -5,13 +5,15 @@ import { FcGoogle } from 'react-icons/fc'
 import useAuth from '../../hook/useAuth';
 import { saveUserDB } from '../../api/utils';
 import toast from 'react-hot-toast';
+import Loader from '../../Component/Loader/Loader';
 const Login = () => {
     const { signIn, signInWithGoogle, loading, user } =useAuth()
+  
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || '/'
   if (user) return <Navigate to={from} replace={true} />
-  if (loading) return <p>jgkjgk</p>
+  if (loading) return <Loader/>
 
   // form submit handler
   const handleSubmit = async event => {
@@ -22,7 +24,7 @@ const Login = () => {
 
     try {
       //User Login
-    const result=  await signIn(email, password)
+    const result=  await signIn (email, password)
     const userData={
        name: result?.user?.displayName,
         email: result?.user?.email,
@@ -30,11 +32,10 @@ const Login = () => {
     };
     // save DB
     await saveUserDB( userData)
-
-      navigate(from, { replace: true })
+navigate(from, { replace: true })
       toast.success('Login Successful')
     } catch (err) {
-      console.log(err)
+      console.log(err.message)
       toast.error(err?.message)
     }
   }

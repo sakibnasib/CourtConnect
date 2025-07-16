@@ -15,8 +15,8 @@ const customIcon = new L.Icon({
 });
 const LocationSection = () => {
     return (
-        <section className="bg-white py-16 px-4 lg:px-0">
-      <div className="max-w-6xl mx-auto text-center">
+        <section className="bg-base-300 py-16 mt-10 rounded-3xl  px-4 lg:px-0">
+      <div className="max-w-6xl mx-auto text-center pl-2">
         <h2 className="text-4xl font-bold text-primary mb-4"> Our Location</h2>
         <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
           Visit our club for a world-class sports experience.

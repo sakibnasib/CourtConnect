@@ -1,23 +1,25 @@
 import React from 'react';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
+import useAuth from '../../../hook/useAuth';
 
 const PendingB = () => {
   const queryClient = useQueryClient();
-
+const axiosSecure = useAxiosSecure()
+const {user}=useAuth()
   // ✅ Fetch all pending bookings
   const { data: bookings = [], isLoading, isError } = useQuery({
     queryKey: ['pendingBookings'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/bookings?status=pending');
+      const res = await axiosSecure.get(`/bookings/pending/${user?.email}`);
       return res.data;
     },
   });
 
   // ✅ Mutation to cancel a booking
   const cancelMutation = useMutation({
-    mutationFn: (bookingId) => axios.delete(`http://localhost:3000/bookings/${bookingId}`),
+    mutationFn: (bookingId) => axiosSecure.delete(`/bookings/${bookingId}`),
     onSuccess: () => {
       Swal.fire('Cancelled!', 'The booking has been cancelled.', 'success');
       queryClient.invalidateQueries(['pendingBookings']);

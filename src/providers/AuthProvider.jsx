@@ -15,7 +15,7 @@ import {
 import { app } from '../firebase/firebase.config'
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const AuthContext = createContext('ji')
+export const AuthContext = createContext(null)
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 
@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
 
   const signIn = (email, password) => {
     setLoading(true)
-    return signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password) 
   }
 
   const signInWithGoogle = () => {

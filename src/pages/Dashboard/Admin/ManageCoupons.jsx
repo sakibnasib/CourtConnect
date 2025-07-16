@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
+import Loader from '../../../Component/Loader/Loader';
 
 const ManageCoupons = () => {
   const queryClient = useQueryClient();
+    const axiosSecure = useAxiosSecure()
 
   const [formData, setFormData] = useState({ code: '', discount: '', expiry: '' });
   const [editCoupon, setEditCoupon] = useState(null);
@@ -14,7 +16,7 @@ const ManageCoupons = () => {
   const { data: coupons = [], isLoading } = useQuery({
     queryKey: ['coupons'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/admin/coupons');
+      const res = await axiosSecure.get('/admin/coupons');
       return res.data;
     },
   });
@@ -22,7 +24,7 @@ const ManageCoupons = () => {
   // Create coupon
   const createMutation = useMutation({
     mutationFn: async (newCoupon) => {
-      const res = await axios.post('http://localhost:3000/coupons', newCoupon);
+      const res = await axiosSecure.post('/coupons', newCoupon);
       return res.data;
     },
     onSuccess: () => {
@@ -34,8 +36,8 @@ const ManageCoupons = () => {
   // Update coupon
   const updateMutation = useMutation({
     mutationFn: async (updatedCoupon) => {
-      const res = await axios.patch(
-        `http://localhost:3000/coupons/${editCoupon._id}`,
+      const res = await axiosSecure.patch(
+        `/coupons/${editCoupon._id}`,
         updatedCoupon
       );
       return res.data;
@@ -50,7 +52,7 @@ const ManageCoupons = () => {
   // Delete coupon
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await axios.delete(`http://localhost:3000/coupons/${id}`);
+      const res = await axiosSecure.delete(`/coupons/${id}`);
       return res.data;
     },
     onSuccess: () => queryClient.invalidateQueries(['coupons']),
@@ -115,7 +117,7 @@ const ManageCoupons = () => {
       <div className="mt-8">
         <h2 className="text-xl font-semibold mb-2">📋 Existing Coupons</h2>
         {isLoading ? (
-          <p>Loading...</p>
+         <Loader/>
         ) : (
           <table className="w-full border mt-2 text-sm">
             <thead>

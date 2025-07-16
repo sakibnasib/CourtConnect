@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import useAxiosSecure from '../../hook/useAxiosSecure';
 
 const Announ = () => {
+  const axiosSecure = useAxiosSecure()
   const { data = [], isLoading, error } = useQuery({
     queryKey: ['announcements'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/announcements');
+      const res = await axiosSecure.get('/announcements');
       return res.data;
     },
   });

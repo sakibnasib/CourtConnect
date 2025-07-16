@@ -20,7 +20,8 @@ const AdminLink = () => {
     <div className="space-y-2 text-sm">
     
       <NavLink
-        to="/dashboard/admin-profile"
+        to="/dashboard"
+         end
         className={({ isActive }) =>
           `${baseStyle} ${isActive ? activeStyle : ''}`
         }
@@ -30,7 +31,7 @@ const AdminLink = () => {
       </NavLink>
 
       <NavLink
-        to="/dashboard/manage-bookings-approval"
+        to="/dashboard/bookings-approval"
         className={({ isActive }) =>
           `${baseStyle} ${isActive ? activeStyle : ''}`
         }

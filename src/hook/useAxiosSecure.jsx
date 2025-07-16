@@ -11,10 +11,10 @@ import { useNavigate } from 'react-router';
 const useAxiosSecure = () => {
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
-
     axiosSecure.interceptors.request.use(config => {
         config.headers.Authorization = `Bearer ${user.accessToken}`
         return config;
+
     }, error => {
         return Promise.reject(error);
     })
@@ -24,12 +24,12 @@ const useAxiosSecure = () => {
     }, error => {
         const status = error.status;
         if (status === 403) {
-            navigate('/forbidden');
+            navigate('/');
         }
         else if (status === 401) {
             logOut()
                 .then(() => {
-                    navigate('/login')
+                    navigate('/auth/login')
                 })
                 .catch(() => { })
         }

@@ -21,37 +21,71 @@ import ManageBookingsApproval from "../pages/Dashboard/Admin/ManageBookings";
 import PaymentPage from "../pages/Dashboard/Member/PaymentPage";
 import ConfirmedBookings from "../pages/Dashboard/Member/ConfirmedBookings";
 import PendingB from "../pages/Dashboard/Member/PendingBookings";
+import PaymentHistory from "../pages/Dashboard/Member/PaymentHistory";
+
+import MemberApprovedBookings from "../pages/Dashboard/Member/MemberApprovedBookings";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute ";
+import AllProfile from "../pages/Dashboard/AllProfile/AllProfile";
+import MemberRoute from "./MemberRoute";
+import AdminBookingsSection from "../pages/Dashboard/Admin/AdminBookings";
 
 
 export const router = createBrowserRouter ([
 
     {path: '/',Component:MainLayout
       ,children:[
-{index:true, Component:Home},
-{path:'courts',Component:CourtBooking}
+   {index:true, Component:Home},
+    {path:'courts',Component:CourtBooking}
       ]
     },
-    {path:'/auth',Component:AuthLayout,
+      {path:'/auth',Component:AuthLayout,
       children:[
 {path:'login', Component:Login},
     {path:'register',Component:Register}
       ]
     },
-    {path:'/dashboard',Component:DashboardLayout,
+    {path:'/dashboard',element:<PrivateRoute>
+      <DashboardLayout/>
+    </PrivateRoute>,
       children:[
-       {path:'manage-courts',Component:ManageCourts},
-       {path:'announcements',Component:AnnouncementList},
-       {path:'manage-coupons',Component:ManageCoupons},
+        {index:true , element:<AllProfile>
+
+        </AllProfile>},
+       {path:'manage-courts',element:<AdminRoute>
+        <ManageCourts/>
+       </AdminRoute>},
+       {path:'announcements',element:<AdminRoute>
+        <AnnouncementList/>
+       </AdminRoute>},
+       {path:'manage-coupons',element:<AdminRoute>
+        <ManageCoupons/>
+       </AdminRoute>},
+       {path : 'manage-bookings', element:<AdminRoute>
+        <AdminBookingsSection/>
+       </AdminRoute> },
        {path:'all-users',Component:AllUsers},
-       {path:'manage-bookings-approval',Component:ManageBookings},
-       {path:'manage-members',Component:ManageMembers},
-       {path:'profile-user',Component:MyProfile},
+       {path:'bookings-approval',element:<AdminRoute>
+        <ManageBookings/>
+       </AdminRoute>},
+       {path:'manage-members',element:<AdminRoute>
+        <ManageMembers/>
+       </AdminRoute>},
        {path:'userannouncements',Component:Announ},
        {path:'usersbookings',Component:PendingBookings},
-       {path:'approved-bookings-member',Component:ManageBookingsApproval},
-       {path:'payment', element:<PaymentPage></PaymentPage>},
-       {path:"confirmed-bookings",Component:ConfirmedBookings},
-       {path:'pending-bookings',Component:PendingB}
+       {path:'approved-bookings-member',element:<MemberRoute>
+        <MemberApprovedBookings/>
+       </MemberRoute>},
+       {path:'payment', element:<MemberRoute>
+        <PaymentPage></PaymentPage>
+       </MemberRoute>},
+       {path:"confirmed-bookings",element:<MemberRoute>
+       <ConfirmedBookings/>
+       </MemberRoute>},
+       {path:'pending-bookings',Component:PendingB},
+       {path:'payment-history',element:<MemberRoute>
+        <PaymentHistory/>
+       </MemberRoute>}
       ]
     }
 

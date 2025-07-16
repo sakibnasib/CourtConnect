@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import axios from "axios";
 import CourtModal from "../../../Component/Modal/CourtModal";
 import { imageUpload } from "../../../api/utils";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
+import Loader from "../../../Component/Loader/Loader";
 
 const slotOptions = [
   "6:00 AM - 7:00 AM",
@@ -18,6 +19,7 @@ const ManageCourts = () => {
   const [editingCourt, setEditingCourt] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const queryClient = useQueryClient();
+   const axiosSecure = useAxiosSecure()
 
   const {
     register: addRegister,
@@ -29,13 +31,12 @@ const ManageCourts = () => {
   const { data: courts = [], isLoading, error } = useQuery({
     queryKey: ["courts"],
     queryFn: async () => {
-      const res = await axios("http://localhost:3000/courts");
+      const res = await axiosSecure.get("/admin/courts");
       return res.data;
     },
   });
-
   const addCourtMutation = useMutation({
-    mutationFn: (data) => axios.post("http://localhost:3000/courts", data),
+    mutationFn: (data) => axiosSecure.post("/courts", data),
     onSuccess: () => {
       queryClient.invalidateQueries(["courts"]);
       Swal.fire("Success", "Court added!", "success");
@@ -45,7 +46,7 @@ const ManageCourts = () => {
   });
 
   const deleteCourtMutation = useMutation({
-    mutationFn: (id) => axios.delete(`http://localhost:3000/courts/${id}`),
+    mutationFn: (id) => axiosSecure.delete(`/courts/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries(["courts"]);
       Swal.fire("Deleted", "Court deleted!", "info");
@@ -61,7 +62,7 @@ const ManageCourts = () => {
       }
 
       const courtData = {
-        name: data.name,
+        title: data.title,
         type: data.type,
         price: parseFloat(data.price),
         image: imageUrl,
@@ -95,8 +96,8 @@ const ManageCourts = () => {
 
       <form onSubmit={handleAddSubmit(onAddSubmit)} className="space-y-4">
         <input
-          {...addRegister("name", { required: "Name is required" })}
-          placeholder="Court Name"
+          {...addRegister("title", { required: "title is required" })}
+          placeholder="Court title"
           className="input input-bordered w-full"
         />
         {addErrors.name && <p className="text-sm text-red-500">{addErrors.name.message}</p>}
@@ -144,7 +145,7 @@ const ManageCourts = () => {
       <div className=" bg-white rounded shadow p-4">
         <h2 className="text-2xl font-bold mb-4">Courts</h2>
         {isLoading ? (
-          <p>Loading...</p>
+         <Loader/>
         ) : courts.length === 0 ? (
           <p>No courts found.</p>
         ) : (
@@ -152,7 +153,7 @@ const ManageCourts = () => {
             <thead>
               <tr>
                 <th>Image</th>
-                <th>Name</th>
+                <th>Title</th>
                 <th>Type</th>
                 <th>Price</th>
                 <th className="text-center">Actions</th>
@@ -164,14 +165,14 @@ const ManageCourts = () => {
                   <td>
                     <img
                       src={court.image}
-                      alt={court.name}
+                      alt={court.image}
                       className="w-16 h-12 object-cover rounded"
                     />
                   </td>
-                  <td>{court.name}</td>
+                  <td>{court.title}</td>
                   <td>{court.type}</td>
                   <td>${court.price}</td>
-                  <td className="flex flex-wrap gap-2 justify-center">
+                  <td className="flex  gap-4 justify-center">
                     <button
                       onClick={() => handleEdit(court)}
                       className="btn btn-sm btn-info"

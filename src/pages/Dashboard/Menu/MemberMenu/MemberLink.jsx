@@ -19,7 +19,7 @@ const MemberLink = () => {
 
   return (
     <div className="space-y-2">
-      <NavLink to="/dashboard/profile-user" className={linkClass}>
+      <NavLink to="/dashboard"  end className={linkClass}>
         <UserCircle size={18} />
         My Profile
       </NavLink>

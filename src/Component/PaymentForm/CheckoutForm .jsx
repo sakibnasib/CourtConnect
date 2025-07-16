@@ -189,6 +189,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import useAxiosSecure from '../../hook/useAxiosSecure';
 
 const CheckoutForm = ({ booking }) => {
   const { user } = useAuth();
@@ -196,6 +197,7 @@ const CheckoutForm = ({ booking }) => {
   const elements = useElements();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const axiosSecure = useAxiosSecure()
 
   const [couponCode, setCouponCode] = useState('');
   const [finalPrice, setFinalPrice] = useState(booking?.totalPrice || 0);
@@ -218,7 +220,7 @@ const CheckoutForm = ({ booking }) => {
 
   // 2. Apply coupon (GET request)
   const couponMutation = useMutation({
-    mutationFn: (couponCode) => axios.get(`http://localhost:3000/coupons/${couponCode}`),
+    mutationFn: (couponCode) => axiosSecure.get(`/coupons/${couponCode}`),
     onSuccess: (res) => {
       const { discount } = res.data;
       if (discount) {
@@ -245,12 +247,12 @@ const CheckoutForm = ({ booking }) => {
 
   // 3. Save payment
   const paymentMutation = useMutation({
-    mutationFn: (paymentData) => axios.post('http://localhost:3000/payments', paymentData),
+    mutationFn: (paymentData) => axiosSecure.post('/payments', paymentData),
   });
 
   // 4. Update booking status
   const updateBookingMutation = useMutation({
-    mutationFn: (id) => axios.patch(`http://localhost:3000/bookings/${id}`, { status: 'confirmed' }),
+    mutationFn: (id) => axiosSecure.patch(`/bookings/${id}`, { status: 'confirmed' }),
     onSuccess: () => {
       queryClient.invalidateQueries(['approvedBookings']);
     },
@@ -287,31 +289,13 @@ const CheckoutForm = ({ booking }) => {
       setProcessing(false);
       return;
     }
-
-    // if (paymentIntent.status === 'succeeded') {
-    //   const paymentData = {
-    //     email: user.email,
-    //     amount: finalPrice,
-    //     transactionId: paymentIntent.id,
-    //     courtType: booking.courtType,
-    //     date: booking.date,
-    //     slots: booking.slot,
-    //     bookingId: booking._id,
-    //     createdAt: new Date(),
-    //   };
-
-    //   await paymentMutation.mutateAsync(paymentData);
-    //   await updateBookingMutation.mutateAsync(booking._id);
-
-    //   Swal.fire('Payment Successful!', '', 'success');
-    //   navigate('/dashboard/confirmed-bookings');
-    // }
     if (paymentIntent.status === 'succeeded') {
   const paymentData = {
     email: user.email,
     amount: finalPrice,
     transactionId: paymentIntent.id,
     courtType: booking.courtType,
+    courttitle: booking.courttitle,
     date: booking.date,
     slots: booking.slot,
     bookingId: booking._id,
@@ -337,7 +321,6 @@ const CheckoutForm = ({ booking }) => {
   };
 
   if (!booking) return <p className="text-center text-red-500">No booking selected.</p>;
-console.log(processing)
   return (
     <>
       <div className="mb-4 flex gap-2">
