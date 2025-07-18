@@ -82,7 +82,7 @@ const MyProfile = () => {
     queryKey: ['userProfile', email],
     enabled: !!email,
     queryFn: async () => {
-      const res = await axiosSecure.get(`http://localhost:3000/users/email/${email}`);
+      const res = await axiosSecure.get(`/users/email/${email}`);
       return res.data;
     },
   });

@@ -186,7 +186,6 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import './checkoutForm.css'
 import useAuth from '../../hook/useAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 import useAxiosSecure from '../../hook/useAxiosSecure';
@@ -207,7 +206,7 @@ const CheckoutForm = ({ booking }) => {
 
   // 1. Get Stripe client secret
   const createPaymentIntentMutation = useMutation({
-    mutationFn: (price) => axios.post('http://localhost:3000/create-payment-intent', { price }),
+    mutationFn: (price) => axiosSecure.post('/create-payment-intent', { price }),
     onSuccess: (res) => setClientSecret(res.data.clientSecret),
     onError: () => Swal.fire('Error', 'Failed to initialize payment', 'error'),
   });

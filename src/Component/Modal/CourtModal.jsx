@@ -37,7 +37,7 @@ const CourtModal = ({ isOpen, onClose, court, refetch }) => {
   }, [court, reset]);
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, ...data }) => axiosSecure.put(`http://localhost:3000/courts/${id}`, data),
+    mutationFn: ({ id, ...data }) => axiosSecure.put(`/courts/${id}`, data),
     onSuccess: () => {
       Swal.fire("Updated", "Court updated successfully", "success");
       onClose();

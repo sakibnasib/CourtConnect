@@ -6,14 +6,9 @@ import BannerSection from '../Component/Banner';
 import Banner from '../Component/Banner';
 import Featured from '../Component/Home/Featured ';
 import WhyChoose from '../Component/Home/WhyChoose';
-
-import Loader from '../Component/Loader/Loader';
-import useRole from '../hook/useRole';
 import UpcomingEvents from '../Component/Home/UpcomingEvents';
 
 const Home = () => {
- const [role , isRoleLoading]=useRole()
- console.log(role , isRoleLoading)
     return (
         <>
  <Banner/>

@@ -24,7 +24,7 @@ const CourtBookingPage = () => {
   const { data: courts, isLoading } = useQuery({
     queryKey: ['courts', currentPage],
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:3000/courts?page=${currentPage}&limit=${pageSize}`);
+      const { data } = await axios.get(`https://server12-taupe.vercel.app/courts?page=${currentPage}&limit=${pageSize}`);
       return data;
     }
   });
@@ -75,13 +75,12 @@ const CourtBookingPage = () => {
       queryClient.prefetchQuery({
         queryKey: ['courts', currentPage + 1],
         queryFn: async () => {
-          const { data } = await axios.get(`http://localhost:3000/courts?page=${currentPage + 1}&limit=${pageSize}`);
+          const { data } = await axios.get(`https://server12-taupe.vercel.app/courts?page=${currentPage + 1}&limit=${pageSize}`);
           return data;
         }
       });
     }
   }, [courts, currentPage, queryClient]);
-console.log(courts)
   return (
     <div className="max-w-7xl mx-auto p-6">
       <Toaster position="top-center" />

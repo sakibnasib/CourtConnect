@@ -1,7 +1,7 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const slides = [
   {
@@ -41,7 +41,7 @@ const Banner = () => {
               title={label}
               className="absolute left-4 top-1/2 z-30 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full"
             >
-              <FaArrowLeft size={20} />
+              <FaAngleLeft size={20} />
             </button>
           )
         }
@@ -53,7 +53,7 @@ const Banner = () => {
               title={label}
               className="absolute right-4 top-1/2 z-30 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full"
             >
-              <FaArrowRight size={20} />
+              <FaAngleRight size={20} />
             </button>
           )
         }

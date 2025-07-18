@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAuth from "../../../hook/useAuth";
+import Loader from "../../../Component/Loader/Loader";
 
 const PendingBookings = () => {
   const queryClient = useQueryClient();
@@ -20,7 +20,7 @@ const {user}=useAuth()
 
   // DELETE booking mutation
   const cancelMutation = useMutation({
-    mutationFn: (id) => axios.delete(`http://localhost:3000/bookings/${id}`),
+    mutationFn: (id) => axiosSecure.delete(`/bookings/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries(["pendingBookings"]);
       Swal.fire("Cancelled", "Booking has been cancelled.", "info");
@@ -43,7 +43,7 @@ const {user}=useAuth()
     });
   };
 
-  if (isLoading) return <p>Loading pending bookings...</p>;
+  if (isLoading) return <Loader/>;
   if (error) return <p className="text-red-500">Failed to load bookings.</p>;
 
   return (
@@ -53,11 +53,11 @@ const {user}=useAuth()
       {bookings.length === 0 ? (
         <p>No pending bookings found.</p>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto shadow-sm">
           <table className="table w-full">
             <thead>
               <tr>
-                <th>Court</th>
+                <th>CourtTitle</th>
                 <th>Type</th>
                 <th>Date</th>
                 <th>Slots</th>
@@ -69,7 +69,7 @@ const {user}=useAuth()
             <tbody>
               {bookings.map((booking) => (
                 <tr key={booking._id}>
-                  <td>{booking.courtName}</td>
+                  <td>{booking.courttitle}</td>
                   <td>{booking.courtType}</td>
                   <td>{booking.date}</td>
                   <td>
@@ -77,7 +77,7 @@ const {user}=useAuth()
                       <span key={idx} className="badge badge-info mr-1">{slot}</span>
                     ))}
                   </td>
-                  <td>৳{booking.totalPrice}</td>
+                  <td>${booking.totalPrice}</td>
                   <td>{booking.userEmail}</td>
                   <td>
                     <button

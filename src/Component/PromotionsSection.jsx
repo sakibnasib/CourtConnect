@@ -1,17 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import Loader from './Loader/Loader';
 
 const PromotionsSection = () => {
   // Fetch all coupons
   const { data: coupons = [], isLoading } = useQuery({
     queryKey: ['coupons'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/coupons');
+      const res = await axios.get('https://server12-taupe.vercel.app/coupons');
       return res.data;
     },
   });
-  if(isLoading )return <p>Loding</p>
+  if(isLoading )return <Loader/>
     return (
          <section className="bg-gradient-to-br mt-10 rounded-3xl from-blue-50 to-blue-100 py-16 px-4 mb-5 lg:px-0">
       <div className="max-w-6xl mx-auto text-center">
