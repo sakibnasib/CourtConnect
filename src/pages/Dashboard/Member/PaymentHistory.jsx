@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import useAuth from '../../../hook/useAuth';
+import Loader from '../../../Component/Loader/Loader';
 
 
 const PaymentHistory = () => {
@@ -14,7 +15,7 @@ const PaymentHistory = () => {
       return data;
     },
   });
-  if (isLoading) return <p className="text-center mt-10">Loading payment history...</p>;
+  if (isLoading) return <Loader/>;
   if (isError) return <p className="text-center text-red-500 mt-10">Failed to load payment history.</p>;
 
   return (

@@ -7,9 +7,11 @@ import useAuth from '../hook/useAuth';
 import useAxiosSecure from '../hook/useAxiosSecure';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '../Component/Loader/Loader';
+import useRole from '../hook/useRole';
 
 const CourtBookingPage = () => {
   const { user } = useAuth();
+  const [role, isRoleLoading]=useRole()
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
@@ -43,7 +45,7 @@ const CourtBookingPage = () => {
   });
 
   const handleBookNow = (court) => {
-    if (!user) {
+    if (!user ) {
       navigate('/auth/login');
       return;
     }
@@ -83,10 +85,9 @@ const CourtBookingPage = () => {
   }, [courts, currentPage, queryClient]);
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <Toaster position="top-center" />
       <h1 className="text-3xl font-bold mb-8 text-center text-blue-800">🏟️ Book a Sports Court</h1>
 
-      {isLoading ? (
+      {isLoading & isRoleLoading ? (
         <Loader/>
       ) : (
         <>
@@ -107,12 +108,15 @@ const CourtBookingPage = () => {
                     <p className="text-sm text-gray-500">Type: <span className="font-medium">{court.type}</span></p>
                     <p className="text-sm text-gray-500">Price: ₹{court.price} / slot</p>
                   </div>
-                  <button
+                  { role === "admin"? <p className='font-bold text-red-500'>Admin Cannot booking slot (Only for user & member)</p>:<>
+                   <button
                     onClick={() => handleBookNow(court)}
                     className="mt-4 w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-xl hover:opacity-90 transition"
                   >
                     Book Now
                   </button>
+                  </> }
+                  
                 </div>
               ))
             ) : (

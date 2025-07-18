@@ -141,9 +141,9 @@ const MemberApprovedBookings = () => {
                   <div className="flex justify-center gap-2">
                     <button
                       onClick={() => handlePayment(booking)}
-                      className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                      className="px-3 py-1  bg-green-500 text-white rounded hover:bg-green-600"
                     >
-                      Pay Now
+                      Pay 
                     </button>
                     <button
                       onClick={() => handleCancel(booking._id)}

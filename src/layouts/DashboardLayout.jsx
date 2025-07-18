@@ -108,6 +108,7 @@ if(isRoleLoading) return <Loader/>
   const handleLogout = async () => {
     try {
       await logOut();
+    
     } catch (err) {
       console.error(err);
     }
