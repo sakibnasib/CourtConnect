@@ -14,7 +14,7 @@ const PromotionsSection = () => {
   });
   if(isLoading )return <Loader/>
     return (
-         <section className="bg-gradient-to-br mt-10 rounded-3xl from-blue-50 to-blue-100 py-16 px-4 mb-5 lg:px-0">
+         <section className="bg-gray-200 mt-10 rounded-3xl py-16 px-4 mb-5 lg:px-0">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-primary mb-4">🔥 Hot Promotions</h2>
         <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">

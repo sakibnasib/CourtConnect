@@ -1,111 +1,3 @@
-// import React from 'react';
-// import { useQuery } from '@tanstack/react-query';
-// import { FaUser, FaUsers, FaMoneyBillWave, FaCalendarDay, FaCalendarWeek, FaCalendarAlt, FaUniversity } from 'react-icons/fa';
-// import useAuth from '../../../hook/useAuth';
-// import useAxiosSecure from '../../../hook/useAxiosSecure';
-
-// const StatCard = ({ icon, label, value, bgColor }) => (
-//   <div className={`flex items-center gap-4 p-4 rounded-lg shadow-md ${bgColor} text-white`}>
-//     <div className="text-3xl">{icon}</div>
-//     <div>
-//       <p className="text-sm uppercase tracking-wide">{label}</p>
-//       <p className="text-xl font-bold">{value}</p>
-//     </div>
-//   </div>
-// );
-
-// const AdminProfile = () => {
-//   const { user } = useAuth();
-// const axiosSecure = useAxiosSecure()
-//   const { data = {}, isLoading } = useQuery({
-//     queryKey: ['adminOverview'],
-//     queryFn: async () => {
-//       const res = await axiosSecure.get('/admin/overview');
-//       return res.data;
-//     },
-//   });
-
-//   const {
-//     totalCourts = 0,
-//     totalUsers = 0,
-//     totalMembers = 0,
-//     earnings = {},
-//   } = data;
-
-//   if (isLoading) return <p className="text-center font-semibold">Loading...</p>;
-
-//   return (
-//     <div className="p-6 max-w-7xl mx-auto">
-//       {/* Admin Info Card */}
-//       <div className="bg-white rounded-lg shadow-md p-6 flex gap-6 items-center mb-8">
-//         <img
-//           src={user?.photoURL || 'https://i.ibb.co/4Jf3Zq2/user.png'}
-//           alt="Admin"
-//           className="w-24 h-24 rounded-full object-cover"
-//         />
-//         <div>
-//           <h2 className="text-2xl font-bold">{user?.displayName || 'Admin'}</h2>
-//           <p className="text-gray-600">{user?.email}</p>
-//         </div>
-//       </div>
-
-//       {/* Stat Cards */}
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-//         <StatCard
-//           icon={<FaUsers />}
-//           label="Total Users"
-//           value={totalUsers}
-//           bgColor="bg-blue-500"
-//         />
-//         <StatCard
-//           icon={<FaUser />}
-//           label="Total Members"
-//           value={totalMembers}
-//           bgColor="bg-green-500"
-//         />
-//         <StatCard
-//           icon={<FaUniversity />}
-//           label="Total Courts"
-//           value={totalCourts}
-//           bgColor="bg-purple-500"
-//         />
-//         <StatCard
-//           icon={<FaMoneyBillWave />}
-//           label="Total Earnings"
-//           value={`₹${earnings.totalEarnings || 0}`}
-//           bgColor="bg-rose-500"
-//         />
-//       </div>
-
-//       {/* Earnings Breakdown */}
-//       <h3 className="text-xl font-semibold mb-4">💰 Earnings Breakdown</h3>
-//       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-//         <StatCard
-//           icon={<FaCalendarDay />}
-//           label="Today"
-//           value={`₹${earnings.todayEarnings || 0}`}
-//           bgColor="bg-yellow-500"
-//         />
-//         <StatCard
-//           icon={<FaCalendarWeek />}
-//           label="This Week"
-//           value={`₹${earnings.weekEarnings || 0}`}
-//           bgColor="bg-orange-500"
-//         />
-//         <StatCard
-//           icon={<FaCalendarAlt />}
-//           label="This Month"
-//           value={`₹${earnings.monthEarnings || 0}`}
-//           bgColor="bg-pink-500"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AdminProfile;
-
-
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -151,10 +43,11 @@ const AdminProfile = () => {
   const { data = {}, isLoading } = useQuery({
     queryKey: ['adminOverview'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/admin/overview');
-      return res.data;
+      const {data} = await axiosSecure.get('/admin/overview');
+      return data;
     },
   });
+ 
 
   const {
     totalCourts = 0,

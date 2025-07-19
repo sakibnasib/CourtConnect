@@ -3,6 +3,8 @@ import { Dialog } from '@headlessui/react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import Loader from '../../../Component/Loader/Loader';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const ManageCoupons = () => {
   const queryClient = useQueryClient();
@@ -30,6 +32,7 @@ const ManageCoupons = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(['coupons']);
       setFormData({ code: '', discount: '', expiry: '' });
+       toast.success('Coupons Add  success.');
     },
   });
 
@@ -144,11 +147,27 @@ const ManageCoupons = () => {
                       Edit
                     </button>
                     <button
-                      onClick={() => deleteMutation.mutate(coupon._id)}
-                      className="text-red-600 hover:underline"
-                    >
-                      Delete
-                    </button>
+  onClick={() => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This Coupons will be permanently deleted!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteMutation.mutate(coupon._id);
+        Swal.fire('Deleted!', 'The coupon has been deleted.', 'success');
+      }
+    });
+  }}
+  className="text-red-600 hover:underline"
+>
+  Delete
+</button>
+
                   </td>
                 </tr>
               ))}

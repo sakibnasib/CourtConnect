@@ -91,7 +91,9 @@ const ManageCourts = () => {
   if (error) return <div className="text-red-500">Failed to load courts.</div>;
 
   return (
-    <div className=" w-12/12 overflow-x-auto mx-auto p-4 sm:p-6 bg-white rounded shadow space-y-10">
+    <>
+
+ <div className=" w-12/12  mx-auto p-4 sm:p-6 bg-white rounded shadow space-y-10">
       <h2 className="text-2xl sm:text-3xl font-bold text-center sm:text-left">Add New Court</h2>
 
       <form onSubmit={handleAddSubmit(onAddSubmit)} className="space-y-4">
@@ -106,7 +108,9 @@ const ManageCourts = () => {
           <option value="">Select Type</option>
           <option value="tennis">Tennis</option>
           <option value="badminton">Badminton</option>
-          <option value="squash">Squash</option>
+          <option value="basketball">Basketball</option>
+           <option value="volleyball">Volleyball</option>
+           <option value="football">Football</option>
         </select>
         {addErrors.type && <p className="text-sm text-red-500">{addErrors.type.message}</p>}
 
@@ -142,7 +146,9 @@ const ManageCourts = () => {
         </button>
       </form>
 
-      <div className=" bg-white rounded shadow p-4">
+
+{/* table */}
+ <div className=" bg-white rounded overflow-x-auto shadow p-4">
         <h2 className="text-2xl font-bold mb-4">Courts</h2>
         {isLoading ? (
          <Loader/>
@@ -180,11 +186,33 @@ const ManageCourts = () => {
                       Edit
                     </button>
                     <button
-                      onClick={() => deleteCourtMutation.mutate(court._id)}
-                      className="btn btn-sm btn-error"
-                    >
-                      Delete
-                    </button>
+  onClick={() => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This court will be permanently deleted!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteCourtMutation.mutate(court._id, {
+          onSuccess: () => {
+            Swal.fire('Deleted!', 'The court has been deleted.', 'success');
+          },
+          onError: () => {
+            Swal.fire('Error!', 'Something went wrong.', 'error');
+          }
+        });
+      }
+    });
+  }}
+  className="btn btn-sm btn-error"
+>
+  Delete
+</button>
+
                   </td>
                 </tr>
               ))}
@@ -201,6 +229,9 @@ const ManageCourts = () => {
         refetch={() => queryClient.invalidateQueries(["courts"])}
       />
     </div>
+    </>
+   
+     
   );
 };
 

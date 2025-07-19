@@ -5,11 +5,17 @@ import useAuth from '../hook/useAuth';
 
 const Navbar = () => {
   const { user } = useAuth()
-
+ const baseStyle =
+    'flex items-center gap-2 px-3 py-2 rounded-md font-medium hover:bg-gray-200';
+  const activeStyle = 'bg-blue-100 text-blue-600';
   const navLinks = (
     <>
-      <li><NavLink to="/" className="font-medium">Home</NavLink></li>
-      <li><NavLink to="/courts" className="font-medium">Courts</NavLink></li>
+      <li><NavLink to="/"  className={({ isActive }) =>
+          `${baseStyle} ${isActive ? activeStyle : ''}`
+        }>Home</NavLink></li>
+      <li><NavLink to="/courts" className={({ isActive }) =>
+          `${baseStyle} ${isActive ? activeStyle : ''}`
+        }>Courts</NavLink></li>
     </>
   );
 
@@ -62,7 +68,7 @@ const Navbar = () => {
               {navLinks}
               {user ? (
                 <>
-                 <ProfileDropdown/>
+               
                 </>
               ) : (
                 <>

@@ -122,9 +122,9 @@ const AllUsers = () => {
       )}
 
       {!isLoading && users.length > 0 && (
-        <table className="w-full border text-sm">
+        <table className="w-full  border text-sm">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 ">
               <th className="border px-4 py-2 text-left">Name</th>
               <th className="border px-4 py-2 text-left">Email</th>
               <th className="border px-4 py-2 text-left">Role</th>

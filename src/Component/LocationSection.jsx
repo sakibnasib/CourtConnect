@@ -15,7 +15,7 @@ const customIcon = new L.Icon({
 });
 const LocationSection = () => {
     return (
-        <section className="bg-base-300 py-16 mt-10 rounded-3xl  px-4 lg:px-0">
+        <section className="bg-gray-200 py-16 mt-10 rounded-3xl  px-4 lg:px-0">
       <div className="max-w-6xl mx-auto text-center pl-2">
         <h2 className="text-4xl font-bold text-primary mb-4"> Our Location</h2>
         <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
@@ -24,8 +24,8 @@ const LocationSection = () => {
 
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Address */}
-          <div className="text-left space-y-4">
-            <h3 className="text-xl font-semibold text-secondary">Address</h3>
+          <div className="text-left ml-3 space-y-4">
+            <h3 className="text-xl font-semibold text-gray-600">Address</h3>
             <p className="text-gray-700">
               CourtConnect Club<br />
               House 55, Road 9/A, Dhanmondi<br />

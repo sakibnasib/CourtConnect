@@ -2,8 +2,8 @@ import React from 'react';
 
 const Featured  = () => {
     return (
-       <section className="bg-base-200 py-12 mt-10 rounded-3xl px-4 md:px-16">
-  <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">🏆 Featured Courts</h2>
+       <section className="bg-gray-200 py-12 mt-10 rounded-3xl px-4 md:px-16">
+  <h2 className="text-3xl font-bold text-center text-primary mb-8">🏆 Featured Courts</h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {/* Card 1 */}
     <div className="rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition">

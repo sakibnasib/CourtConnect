@@ -68,7 +68,7 @@ const Banner = () => {
             <div className="absolute inset-0" />
             <div className="absolute inset-0 z-20 flex items-center px-6 lg:px-16">
               <motion.div
-                className="text-blue-200 max-w-2xl"
+                className="text-white max-w-2xl"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
@@ -82,7 +82,7 @@ const Banner = () => {
                   {slide.heading}
                 </motion.h2>
                 <motion.p
-                  className="text-lg md:text-xl text-white/90"
+                  className="text-lg md:text-xl text-white"
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1.4 }}

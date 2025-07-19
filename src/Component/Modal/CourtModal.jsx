@@ -94,7 +94,9 @@ const CourtModal = ({ isOpen, onClose, court, refetch }) => {
                 <option value="">Select Type</option>
                 <option value="tennis">Tennis</option>
                 <option value="badminton">Badminton</option>
-                <option value="squash">Squash</option>
+                <option value="basketball">Basketball</option>
+                <option value="volleyball">Volleyball</option>
+                  <option value="football">Football</option>
               </select>
               <input type="number" {...register("price", { required: true })} className="input input-bordered w-full" />
               <input type="file" {...register("imageFile")} className="file-input file-input-bordered w-full" />
