@@ -1,19 +1,20 @@
-import React from 'react';
+import React  from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { FcGoogle } from 'react-icons/fc'
 import useAuth from '../../hook/useAuth';
 import { saveUserDB } from '../../api/utils';
 import toast from 'react-hot-toast';
-import Loader from '../../Component/Loader/Loader';
+
 const Login = () => {
-    const { signIn, signInWithGoogle, loading, user } =useAuth()
+    const { signIn, signInWithGoogle, user,loading } =useAuth()
   
   const navigate = useNavigate()
   const location = useLocation()
+ 
   const from = location?.state?.from?.pathname || '/'
   if (user) return <Navigate to={from} replace={true} />
-  if (loading) return <Loader/>
+  
 
   // form submit handler
   const handleSubmit = async event => {
@@ -37,6 +38,7 @@ navigate(from, { replace: true })
     } catch (err) {
       console.log(err.message)
       toast.error(err?.message)
+    
     }
   }
   // Handle Google Signin
@@ -59,6 +61,7 @@ navigate(from, { replace: true })
     } catch (err) {
       console.log(err)
       toast.error(err?.message)
+     
     }
   }
 
@@ -120,6 +123,7 @@ navigate(from, { replace: true })
               ) : (
                 'Continue'
               )}
+              {/* Continue */}
             </button>
           </div>
         </form>
@@ -146,7 +150,7 @@ navigate(from, { replace: true })
         <p className='px-6 text-sm text-center text-gray-400'>
           Don&apos;t have an account yet?{' '}
           <Link
-            to='/auth/register'
+            to='/register'
             className='hover:underline hover:text-lime-500 text-gray-600'
           >
            Register

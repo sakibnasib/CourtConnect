@@ -15,7 +15,7 @@ const ManageBookings = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['bookings', page],
     queryFn: async () => {
-      const res = await axiosSecure.get('http://localhost:3000/bookings/admin/pending', {
+      const res = await axiosSecure.get('/bookings/admin/pending', {
         params: { page, limit },
       });
       return res.data;
@@ -68,7 +68,7 @@ const ManageBookings = () => {
       ) : (
         <>
           <div className="overflow-x-auto rounded shadow">
-            <table className="table w-full text-sm border">
+            <table className="table w-full text-sm ">
               <thead>
                 <tr className="bg-gray-100 text-left">
                   <th className="px-4 py-2">Court Title</th>
@@ -85,7 +85,17 @@ const ManageBookings = () => {
                   <tr key={booking._id} className="border-t">
                     <td className="px-4 py-2">{booking.courttitle}</td>
                     <td className="px-4 py-2">{booking.courtType}</td>
-                    <td className="px-4 py-2">{booking.date}</td>
+
+                    <td className="px-4 py-2">
+                      {new Date(booking.date).toLocaleString("en-IN", {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })}
+                    </td>
                    <td className="px-4 py-2">
   <select className="border px-2 py-1 rounded w-32 text-sm">
     {booking.slots.map((slot, idx) => (
@@ -118,19 +128,19 @@ const ManageBookings = () => {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-end gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-6">
             <button
               onClick={() => setPage((p) => Math.max(p - 1, 1))}
               disabled={page === 1}
-              className="px-2 py-1 border rounded bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+              className="px-2 py-1 border rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
             >
-              <FaArrowLeft />
+              <FaArrowLeft size={10}/>
             </button>
             {[...Array(totalPages)].map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setPage(idx + 1)}
-                className={`px-3 py-1 border rounded ${
+                className={`px-3 py-1 border rounded-full ${
                   page === idx + 1 ? 'bg-blue-500 text-white' : 'bg-white'
                 }`}
               >
@@ -140,9 +150,9 @@ const ManageBookings = () => {
             <button
               onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
               disabled={page === totalPages}
-              className="px-2 py-1 border rounded bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+              className="px-2 py-1 border rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
             >
-              <FaArrowRight />
+              <FaArrowRight size={10} />
             </button>
           </div>
         </>

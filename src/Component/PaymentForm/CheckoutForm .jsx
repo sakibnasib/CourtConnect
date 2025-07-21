@@ -219,7 +219,7 @@ const CheckoutForm = ({ booking }) => {
 
   // 2. Apply coupon (GET request)
   const couponMutation = useMutation({
-    mutationFn: (couponCode) => axiosSecure.get(`/coupons/${couponCode}`),
+    mutationFn: (couponCode) => axiosSecure.get(`/couponsed/${couponCode}`),
     onSuccess: (res) => {
       const { discount } = res.data;
       if (discount) {

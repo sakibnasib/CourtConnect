@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hook/useAxiosSecure';
+import Loader from '../Loader/Loader';
 
 const Announ = () => {
   const axiosSecure = useAxiosSecure()
@@ -11,7 +12,7 @@ const Announ = () => {
     },
   });
 
-  if (isLoading) return <p>Loading announcements...</p>;
+  if (isLoading) return <Loader/>;
   if (error) return <p className="text-red-500">Failed to load announcements.</p>;
 
   return (

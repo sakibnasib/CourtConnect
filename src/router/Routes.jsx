@@ -36,12 +36,8 @@ export const router = createBrowserRouter ([
     {path: '/',Component:MainLayout
       ,children:[
    {index:true, Component:Home},
-    {path:'courts',Component:CourtBooking}
-      ]
-    },
-      {path:'/auth',Component:AuthLayout,
-      children:[
-{path:'login', Component:Login},
+    {path:'courts',Component:CourtBooking},
+    {path:'login', Component:Login},
     {path:'register',Component:Register}
       ]
     },

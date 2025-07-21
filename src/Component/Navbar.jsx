@@ -25,7 +25,6 @@ const Navbar = () => {
         {/* Logo + Site Name */}
         <div className="flex-1">
           <Link to="/" className="text-xl font-bold flex items-center gap-2">
-            {/* <img src="/logo.png" alt="logo" className="w-10 h-10" /> */}
           <Logo/>
           </Link>
         </div>
@@ -42,8 +41,8 @@ const Navbar = () => {
             <ProfileDropdown />
           ) : (
             <>
-              <Link to="/auth/login" className="btn btn-outline btn-sm">Login</Link>
-              <Link to="/auth/register" className="btn btn-outline btn-sm">Register</Link>
+              <Link to="/login" className="btn btn-outline btn-sm">Login</Link>
+              <Link to="/register" className="btn btn-outline btn-sm">Register</Link>
             </>
           )}
 

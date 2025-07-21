@@ -77,7 +77,7 @@ const AdminLink = () => {
         }
       >
         <CalendarCheck size={16} />
-        Manage Confirmed Bookings
+        Confirmed Bookings
       </NavLink>
 
       <NavLink

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import React from 'react';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router';
 
@@ -29,7 +28,7 @@ const useAxiosSecure = () => {
         else if (status === 401) {
             logOut()
                 .then(() => {
-                    navigate('/auth/login')
+                    navigate('/login')
                 })
                 .catch(() => { })
         }

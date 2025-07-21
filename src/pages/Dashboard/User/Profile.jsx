@@ -72,6 +72,7 @@
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hook/useAuth';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
+import Loader from '../../../Component/Loader/Loader';
 
 const MyProfile = () => {
   const { user } = useAuth();
@@ -87,7 +88,7 @@ const MyProfile = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center py-10 text-lg font-medium">Loading profile...</p>;
+  if (isLoading) return <Loader/>;
   if (error || !users) return <p className="text-red-500 text-center py-10">Failed to load user profile.</p>;
 
   const {

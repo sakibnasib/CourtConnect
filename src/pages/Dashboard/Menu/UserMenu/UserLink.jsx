@@ -18,7 +18,7 @@ const UserLink = () => {
         My Profile
       </NavLink>
 
-      <NavLink to="/dashboard/usersbookings" className={linkClass}>
+      <NavLink to="/dashboard/pending-bookings" className={linkClass}>
         <CalendarCheck size={18} />
         My Bookings
       </NavLink>

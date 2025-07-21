@@ -71,7 +71,14 @@ const {user}=useAuth()
                 <tr key={booking._id}>
                   <td>{booking.courttitle}</td>
                   <td>{booking.courtType}</td>
-                  <td>{booking.date}</td>
+                  <td> {new Date(booking.date).toLocaleString("en-IN", {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })}</td>
                   <td>
                     {booking.slots.map((slot, idx) => (
                       <span key={idx} className="badge badge-info mr-1">{slot}</span>
