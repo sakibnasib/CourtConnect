@@ -1,10 +1,14 @@
-🏟️ CourtConnect – Client Side
+# 🏟️ CourtConnect – Client Side
 A responsive, user-friendly frontend for a full-stack sports court booking application. Users can browse courts, make bookings, and process payments, while admins manage users, courts, and finances via a powerful dashboard.
 
 🔗 Live Site
 👉 [View](https://courtconnect-fe336.web.app/)
 
-🚀 Features
+ # admin
+  username :sakin@t.com
+  password : 12345678
+
+# 🚀 Features
 👤 User Features
 🔐 Secure Firebase Authentication (Google login)
 
@@ -27,7 +31,7 @@ A responsive, user-friendly frontend for a full-stack sports court booking appli
 
 📈 Google Charts / Chart.js for earnings insights
 
-📱 UI/UX
+# 📱 UI/UX
 🎨 Modern and mobile-first design using Tailwind CSS
 
 ⚡ Fast load times with lazy loading
@@ -35,7 +39,7 @@ A responsive, user-friendly frontend for a full-stack sports court booking appli
 🔍 Search & pagination for members and bookings
 
 
-🧰 Tech Stack
+# 🧰 Tech Stack
 Tech	Description
 React	Frontend UI framework
 Tailwind CSS	Styling library
@@ -46,7 +50,7 @@ TanStack Query	Data fetching & caching
 Stripe	Secure payments
 Google Charts / Chart.js	Data visualization
 
-📦 Installation
+# 📦 Installation
 Clone the repository
 
 bash
@@ -62,7 +66,7 @@ Edit
 npm install
 Environment Variables
 
-Create a .env file in the root directory:
+# Create a .env file in the root directory:
 
 ini
 Copy
@@ -78,7 +82,7 @@ bash
 Copy
 Edit
 npm run dev
-📁 Folder Structure
+# 📁 Folder Structure
 bash
 Copy
 Edit
@@ -92,14 +96,12 @@ src/
 ├── context/           # Auth context
 ├── services/          # API handlers (axiosSecure setup)
 └── assets/            # Images and static files
-🔒 Authentication Flow
+# 🔒 Authentication Flow
 Uses Firebase for OAuth (Google)
-
-JWT is issued from the backend and stored in localStorage
 
 Admin routes are protected using role-based guards
 
-📊 Admin Dashboard
+# 📊 Admin Dashboard
 Clean and intuitive layout
 
 Includes earnings breakdown (Today, Week, Month, Total)
@@ -108,14 +110,13 @@ Integrated bar/pie charts for financial reporting
 
 Booking and member management with pagination & filters
 
-📌 To-Do / Future Improvements
+# 📌 To-Do / Future Improvements
 ✅ Add calendar view for bookings
 
 ✅ Add email confirmation for bookings
 
 ⏳ Push notifications for upcoming bookings
 
-⏳ Dark mode toggle
 
 🙌 Credits
 🔥 React
