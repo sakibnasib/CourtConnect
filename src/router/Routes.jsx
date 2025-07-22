@@ -29,12 +29,14 @@ import AdminRoute from "./AdminRoute ";
 import AllProfile from "../pages/Dashboard/AllProfile/AllProfile";
 import MemberRoute from "./MemberRoute";
 import AdminBookingsSection from "../pages/Dashboard/Admin/AdminBookings";
+import ErrorPage from "../Component/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter ([
 
-    {path: '/',Component:MainLayout
-      ,children:[
+    {path: '/',Component:MainLayout,
+      errorElement:<ErrorPage/>,
+      children:[
    {index:true, Component:Home},
     {path:'courts',Component:CourtBooking},
     {path:'login', Component:Login},

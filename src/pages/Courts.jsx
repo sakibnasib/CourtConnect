@@ -85,8 +85,9 @@ const CourtBookingPage = () => {
   }, [courts, currentPage, queryClient]);
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8 text-center text-blue-800">🏟️ Book a Sports Court</h1>
-
+      <h1 className="text-3xl font-bold text-center text-blue-800">🏟️ Book a Sports Court</h1>
+<p className='text-gray-600 text-center mb-5'>Find and reserve top-rated sports courts in your area with ease. Whether it’s badminton, tennis, or football, our platform connects players with available venues in real-time.</p>
+    
       {isLoading & isRoleLoading ? (
         <Loader/>
       ) : (
@@ -106,7 +107,7 @@ const CourtBookingPage = () => {
                   <div className="space-y-2">
                     <h2 className="text-xl font-bold text-gray-800">{court.title}</h2>
                     <p className="text-sm text-gray-500">Type: <span className="font-medium">{court.type}</span></p>
-                    <p className="text-sm text-gray-500">Price: ₹{court.price} / slot</p>
+                    <p className="text-sm text-gray-500">Price: ${court.price} / slot</p>
                   </div>
                   { role === "admin"? <p className='font-bold text-red-500'>Admin Cannot booking slot (Only for user & member)</p>:<>
                    <button
@@ -182,7 +183,7 @@ const CourtBookingPage = () => {
                 <label className="block text-sm font-medium">Price per Slot</label>
                 <input
                   type="text"
-                  value={`₹${selectedCourt?.price || 0}`}
+                  value={`${selectedCourt?.price || 0}`}
                   readOnly
                   className="w-full border px-3 py-2 rounded bg-gray-100"
                 />
@@ -233,7 +234,7 @@ const CourtBookingPage = () => {
                 </div>
               </div>
               <div className="text-right text-gray-700 font-medium">
-                Total Price: ₹{selectedCourt?.price * bookingData.slots.length || 0}
+                Total Price: ${selectedCourt?.price * bookingData.slots.length || 0}
               </div>
               <div className="flex justify-end space-x-2">
                 <button

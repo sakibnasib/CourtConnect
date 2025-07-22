@@ -110,7 +110,7 @@ const AnnouncementSection = () => {
   return (
     <section className="bg-white rounded-xl p-6 shadow-md max-w-3xl mx-auto mt-10">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-2">
-        <h2 className="text-2xl font-bold text-gray-800">📢 Announcements</h2>
+        <h2 className="text-3xl font-bold text-blue-800">📢 Announcements</h2>
         <button
           onClick={() => openModal()}
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

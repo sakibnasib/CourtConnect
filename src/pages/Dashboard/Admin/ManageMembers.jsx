@@ -49,10 +49,11 @@ const ManageMembers = () => {
       }
     });
   };
-
+  
+// Reset to first page when searching
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to first page when searching
+    setCurrentPage(1); 
   };
 
   const handlePageChange = (page) => {
@@ -61,15 +62,17 @@ const ManageMembers = () => {
 
   return (
     <div className="max-w-5xl mx-auto p-4 space-y-6">
-      <h2 className="text-3xl font-bold mb-4">Manage Members</h2>
+      <h2 className="text-3xl text-blue-800 text-center font-bold mb-4">Manage Members</h2>
 
-      <input
+     <div className="flex justify-center mb-4">
+       <input
         type="text"
         placeholder="Search members by name"
-        className="input input-bordered w-full md:w-1/2"
+        className="input input-bordered w-full md:w-1/2 mx-auto rounded-full"
         value={searchTerm}
         onChange={handleSearchChange}
       />
+     </div>
 
       {isLoading ? (
         <Loader />

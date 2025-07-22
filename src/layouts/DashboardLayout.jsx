@@ -92,7 +92,6 @@
 import { Outlet, Link } from 'react-router';
 import { Menu, X, LogOut } from 'lucide-react';
 import { useState } from 'react';
-import useAuth from '../hook/useAuth';
 import Logo from '../Component/Logo';
 import AdminLink from '../pages/Dashboard/Menu/AdminLink/AdminLink';
 import useRole from '../hook/useRole';
@@ -102,18 +101,10 @@ import Loader from '../Component/Loader/Loader';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { logOut } = useAuth();
+ 
   const [role , isRoleLoading]=useRole()
 if(isRoleLoading) return <Loader/>
-  const handleLogout = async () => {
-    try {
-      await logOut();
-     
-
-    } catch (err) {
-      console.error(err);
-    }
-  };
+ 
 
   return (
     <div className="flex flex-col  md:flex-row h-screen bg-gray-50">
@@ -137,14 +128,7 @@ if(isRoleLoading) return <Loader/>
            {role === 'user' && <UserLink/>}
         </div>
 
-        <div className="absolute mt-2 bottom-4 left-4">
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-red-500 hover:text-red-600"
-          >
-            <LogOut size={16} /> Logout
-          </button>
-        </div>
+       
       </aside>
 
       {/* Overlay */}

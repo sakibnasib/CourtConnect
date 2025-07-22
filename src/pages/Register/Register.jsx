@@ -67,7 +67,7 @@ const Register = () => {
     }
   }
   return (
-    <div className='flex justify-center items-center min-h-screen bg-white'>
+    <div className='flex justify-center items-center md:mt-5 md:mb-5 min-h-screen bg-white'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
@@ -140,7 +140,7 @@ const Register = () => {
           <div>
             <button
               type='submit'
-              className='bg-lime-500 w-full rounded-md py-3 text-white'
+              className='bg-blue-400 w-full rounded-md py-3 text-white'
             >
               {loading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />

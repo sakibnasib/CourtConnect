@@ -59,7 +59,7 @@ const ManageBookings = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 pt-5">
-      <h2 className="text-2xl font-bold mb-4">Manage Booking Requests</h2>
+      <h2 className="text-3xl text-blue-800 font-bold mb-4 text-center">Manage Booking Requests</h2>
 
       {isLoading ? (
         <Loader />
@@ -105,7 +105,7 @@ const ManageBookings = () => {
     ))}
   </select>
 </td>
-                    <td className="px-4 py-2">₹{booking.totalPrice}</td>
+                    <td className="px-4 py-2">${booking.totalPrice}</td>
                     <td className="px-4 py-2 capitalize">{booking.status}</td>
                     <td className="px-4 py-2 space-x-1 flex ">
                       <button

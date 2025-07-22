@@ -43,15 +43,17 @@ const AllUsers = () => {
 
   return (
     <div className="max-w-5xl mx-auto pt-5">
-      <h1 className="text-2xl font-bold mb-4">👥 All Users</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-blue-800">👥 All Users</h1>
 
-      <input
+     <div className="flex justify-center mb-4">
+       <input
         type="text"
         placeholder="Search by name or email..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="border px-4 py-2 rounded mb-4 w-full max-w-md"
+        className="border px-4 py-2  mb-4 w-full max-w-md rounded-full"
       />
+     </div>
 
       {isLoading && <Loader />}
       {isError && <p className="text-red-600">Failed to fetch users.</p>}
@@ -62,7 +64,7 @@ const AllUsers = () => {
 
       {!isLoading && users.length > 0 && (
         <>
-          <table className="w-full border text-sm mb-4">
+          <table className="w-full border text-sm mb-4 overflow-x-auto">
             <thead className="bg-gray-100">
               <tr>
                 <th className="border px-4 py-2 text-left">Name</th>

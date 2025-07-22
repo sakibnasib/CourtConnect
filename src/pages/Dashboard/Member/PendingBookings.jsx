@@ -102,7 +102,7 @@ const PendingB = () => {
                         ))}
                       </select>
                     </td>
-                    <td className="py-2 px-4 border">₹{booking.totalPrice}</td>
+                    <td className="py-2 px-4 border">${booking.totalPrice}</td>
                     <td className="py-2 px-4 border">
                       <button
                         onClick={() => handleCancel(booking._id)}

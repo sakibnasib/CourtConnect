@@ -79,7 +79,7 @@ const ManageCoupons = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">🎟️ Manage Coupons</h1>
+      <h1 className="text-3xl font-bold mb-4 text-blue-800 text-center">🎟️ Manage Coupons</h1>
 
       {/* Create Coupon Form */}
       <form onSubmit={handleCreateSubmit} className="bg-white shadow rounded p-4 space-y-4">
