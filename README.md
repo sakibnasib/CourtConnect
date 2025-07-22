@@ -1,4 +1,4 @@
-🏟️ Sports Court Booking – Client Side
+🏟️ CourtConnect – Client Side
 A responsive, user-friendly frontend for a full-stack sports court booking application. Users can browse courts, make bookings, and process payments, while admins manage users, courts, and finances via a powerful dashboard.
 
 🔗 Live Site
@@ -67,7 +67,6 @@ Create a .env file in the root directory:
 ini
 Copy
 Edit
-VITE_API_URL=https://your-backend-url.com
 VITE_FIREBASE_API_KEY=your_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 VITE_FIREBASE_PROJECT_ID=your_project_id
