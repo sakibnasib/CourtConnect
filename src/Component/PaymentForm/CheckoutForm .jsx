@@ -339,7 +339,7 @@ const CheckoutForm = ({ booking }) => {
       </div>
 
       {finalPrice !== booking.totalPrice && (
-        <p className="text-green-600 font-semibold mb-4">Coupon Applied! New price: ₹{finalPrice}</p>
+        <p className="text-green-600 font-semibold mb-4">Coupon Applied! New price: ${finalPrice}</p>
       )}
 
       <form onSubmit={handleSubmit}>
@@ -352,7 +352,7 @@ const CheckoutForm = ({ booking }) => {
         />
         <input value={booking.date} readOnly className="w-full border px-2 py-1 rounded mb-2" />
         <input
-          value={`₹${finalPrice}`}
+          value={ `$${finalPrice}`}
           readOnly
           className="w-full border px-2 py-1 rounded font-semibold mb-4"
         />

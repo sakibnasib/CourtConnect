@@ -1,8 +1,4 @@
-
-
 import axios from "axios"
-
-
 
 export const imageUpload=async imageData =>{
     const imageFormData = new FormData()
