@@ -71,7 +71,7 @@ const ManageBookings = () => {
             <table className="table w-full text-sm ">
               <thead>
                 <tr className="bg-gray-100 text-left">
-                  <th className="px-4 py-2">Court Title</th>
+                  <th className="px-4 py-2">Email</th>
                   <th className="px-4 py-2">Type</th>
                   <th className="px-4 py-2">Date</th>
                   <th className="px-4 py-2">Slots</th>
@@ -83,7 +83,7 @@ const ManageBookings = () => {
               <tbody>
                 {bookings.map((booking) => (
                   <tr key={booking._id} className="border-t">
-                    <td className="px-4 py-2">{booking.courttitle}</td>
+                    <td className="px-4 py-2">{booking.userEmail}</td>
                     <td className="px-4 py-2">{booking.courtType}</td>
 
                     <td className="px-4 py-2">

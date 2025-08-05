@@ -44,7 +44,6 @@ const ManageCourts = () => {
   const courts = data?.courts || [];
 
   const totalPages = Math.ceil((data?.total || 0) / itemsPerPage);
-console.log(courts)
   const addCourtMutation = useMutation({
     mutationFn: (data) => axiosSecure.post("/courts", data),
     onSuccess: () => {
