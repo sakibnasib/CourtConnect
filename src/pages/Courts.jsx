@@ -85,7 +85,7 @@ const CourtBookingPage = () => {
   }, [courts, currentPage, queryClient]);
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center text-blue-800">🏟️ Book a Sports Court</h1>
+      <h1 className="text-3xl font-bold text-center text-blue-800">🏟️hu Book a Sports Court</h1>
 <p className='text-gray-600 text-center mb-5'>Find and reserve top-rated sports courts in your area with ease. Whether it’s badminton, tennis, or football, our platform connects players with available venues in real-time.</p>
     
       {isLoading & isRoleLoading ? (
