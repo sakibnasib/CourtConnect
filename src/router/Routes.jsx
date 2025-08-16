@@ -30,6 +30,7 @@ import AllProfile from "../pages/Dashboard/AllProfile/AllProfile";
 import MemberRoute from "./MemberRoute";
 import AdminBookingsSection from "../pages/Dashboard/Admin/AdminBookings";
 import ErrorPage from "../Component/ErrorPage/ErrorPage";
+import About from "../pages/About/About";
 
 
 export const router = createBrowserRouter ([
@@ -39,6 +40,7 @@ export const router = createBrowserRouter ([
       children:[
    {index:true, Component:Home},
     {path:'courts',Component:CourtBooking},
+    {path:'about',Component:About},
     {path:'login', Component:Login},
     {path:'register',Component:Register}
       ]

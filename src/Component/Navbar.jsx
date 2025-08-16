@@ -16,12 +16,15 @@ const Navbar = () => {
       <li><NavLink to="/courts" className={({ isActive }) =>
           `${baseStyle} ${isActive ? activeStyle : ''}`
         }>Courts</NavLink></li>
+          <li><NavLink to="/about" className={({ isActive }) =>
+          `${baseStyle} ${isActive ? activeStyle : ''}`
+        }>About</NavLink></li>
     </>
   );
 
   return (
     <div className="bg-base-100 rounded-3xl shadow-md sticky top-0 z-50  ">
-      <div className="navbar max-w-7xl mx-auto">
+      <div className="navbar w-12/12 mx-auto px-8">
         {/* Logo + Site Name */}
         <div className="flex-1">
           <Link to="/" className="text-xl font-bold flex items-center gap-2">

@@ -23,7 +23,7 @@ const slides = [
 
 const Banner = () => {
   return (
-    <section className="max-w-7xl mx-auto ">
+    <section className="w-12/12 mx-auto ">
       <Carousel
         autoPlay
         infiniteLoop
