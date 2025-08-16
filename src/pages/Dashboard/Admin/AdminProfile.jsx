@@ -162,7 +162,7 @@ const AdminProfile = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["adminOverview"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("http://localhost:3000/admin/overview");
+      const { data } = await axiosSecure.get("/admin/overview");
       return data.data; // we only need `data` from API
     },
   });
