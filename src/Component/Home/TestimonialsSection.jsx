@@ -108,7 +108,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="relative py-24 px-4 rounded-3xl sm:px-6 lg:px-8 overflow-hidden bg-gray-200">
+    <section className="relative py-24 px-4 mt-10 mb-10 rounded-3xl sm:px-6 lg:px-8 overflow-hidden bg-gray-200">
       <div className="container mx-auto max-w-6xl text-center relative z-10">
         {/* Header */}
         <motion.h2
